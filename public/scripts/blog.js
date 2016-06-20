@@ -74,20 +74,20 @@ var BlogPostForm = React.createClass({
     },
      handleTitleChange: function(e) {
          //debugger;
-        this.setState({title: e.target.value.trim()});
+        this.setState({title: e.target.value});
     },
     handleAuthorChange: function(e) {
-        this.setState({author: e.target.value.trim()});
+        this.setState({author: e.target.value});
     }, 
     handleTextChange: function(e) {
-        this.setState({text: e.target.value.trim()});
+        this.setState({text: e.target.value});
     },
     handleSubmit: function(e){
         console.log('handle submit happend')
         e.preventDefault();
-        var title = this.state.title;
-        var author = this.state.author;
-        var text = this.state.text;
+        var title = this.state.title.trim();
+        var author = this.state.author.trim();
+        var text = this.state.text.trim();
         console.log("title", title)
         if(!text || !author || !title) {
             return;
@@ -103,19 +103,16 @@ var BlogPostForm = React.createClass({
                     type="text" 
                     placeholder="Blog Title"
                     value={this.state.title}
-                    onChange={this.handleTitleChange}
-                /> <br />
+                    onChange={this.handleTitleChange} /> <br />
                 <input 
                     type="text" 
                     placeholder="Author's Name"
                     value={this.state.author} 
-                    onChange={this.handleAuthorChange}
-                    /> <br />
+                    onChange={this.handleAuthorChange} /> <br />
                 <textarea 
                     placeholder="Write a post!"
                     value={this.state.text} 
-                    onChange={this.handleTextChange}
-                    /> <br />
+                    onChange={this.handleTextChange} /> <br />
                 <input type="submit" value="Post" />
             </form>
         );
